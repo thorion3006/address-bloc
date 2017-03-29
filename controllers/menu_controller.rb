@@ -73,6 +73,14 @@ class MenuController
         puts "New entry created"
     end
 
+    def nuke
+        system "clear"
+        puts "Are you sure that you want to destroy the whole book? Type 'y' to continue and 'n' to go back to main menu"
+        selection = gets.chomp
+        address_book.entries.clear if selection == "y"
+        main_menu
+    end
+
     def delete_entry(entry)
         address_book.entries.delete(entry)
         puts "#{entry.name} has been deleted"
